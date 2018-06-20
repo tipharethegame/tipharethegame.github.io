@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+
+<head>
+	
+	<title>TIPHARETH</title><meta charset='UTF-8'/>
+	<link rel='shortcut icon' href='favicon.ico'/>
+	
+	<style>
+		
+		body {
+			margin: 0; padding: 0;
+			background: #000; color: #FFF;
+		}
+		
+		#Screen {
+			position: absolute; left: 50%; top: 50%;
+			background: url('Loading.gif') no-repeat center;
+			background-size: 10%;
+		}
+		
+	</style>
+	
+	<script>
+		
+		Default = 'Intro/';
+		
+		Missions = [ 'Nadzor', 'Vperde', 'Vpizdu', 'Chort', 'Koskhoz' ];
+		
+		var mn = window.location.hash.split('#')[1] - 1;
+		if (mn >= 0 && mn < Missions.length) START = 'Missions/' + Missions[mn] + '/Briefing';
+		else START = Default;
+		
+		PREFIX = '1597247462/';
+		
+	</script>
+	
+	<script src='1597247462/Stuff/Sugar.js'></script>
+	<script src='1597247462/Stuff/Math.js'></script>
+	<script src='1597247462/Stuff/Math3.js'></script>
+	<script src='1597247462/Stuff/Config.js'></script>
+	<script src='1597247462/Stuff/Rect.js'></script>
+	<script src='1597247462/Stuff/Box.js'></script>
+	<script src='1597247462/Stuff/Clock.js'></script>
+	<script src='1597247462/Stuff/Sound.js'></script>
+	<script src='1597247462/Stuff/Clip.js'></script>
+	<script src='1597247462/Stuff/Synth.js'></script>
+	<script src='1597247462/Stuff/Raster.js'></script>
+	<script src='1597247462/Stuff/Script.js'></script>
+	<script src='1597247462/Stuff/Input.js'></script>
+	<script src='1597247462/Stuff/Screen.js'></script>
+	<script src='1597247462/Stuff/Sprite.js'></script>
+	<script src='1597247462/Stuff/Run.js'></script>
+	
+	<script>
+		
+		UpdateLayout = function ()
+		{
+			var sw = window.innerWidth;
+			var sh = window.innerHeight;
+			
+			var sor = Screen.W / Screen.H;
+			var scr = sw / sh, zf = scr / sor;
+			if (scr < sor) sh *= zf; else sw /= zf;
+			
+			Screen.Canvas.style.width = sw + 'px';
+			Screen.Canvas.style.height = sh + 'px';
+			Screen.Canvas.style.marginLeft = -(sw / 2) + 'px';
+			Screen.Canvas.style.marginTop = -(sh / 2) + 'px';
+			Screen.Canvas.style.visibility = 'visible';
+		}
+		
+		window.addEventListener("load", UpdateLayout);
+		window.addEventListener("resize", UpdateLayout);
+		
+	</script>
+	
+</head>
+
+<body>
+	<canvas id='Screen'>
+		<noscript>Нет скриптов &mdash; нет мультиков.</noscript>
+	</canvas>
+</body>
